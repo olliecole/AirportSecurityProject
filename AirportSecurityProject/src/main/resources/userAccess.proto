@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "as.userAccess";
+option java_outer_classname = "userAccessServiceImpl";
+
+package userAccess;
+
+//Interface exported by the server.
+service userAccessService {
+
+	rpc login( LoginRequest) returns (LoginResponse){}
+	rpc logout(LogoutRequest) returns (LogoutResponse){}
+	
+}
+// request message for username and password
+message LoginRequest{
+	string username = 1;
+	string password = 2;
+}
+//response
+message LoginResponse{
+	string responseMessage = 1;
+	
+}
+// request message for username
+message LogoutRequest{
+	string username = 1;
+}
+//response message for
+message LogoutResponse{
+	string responseMessage = 1;
+
+}
+//passing an empty message no server reply, error message
+message Empty{}
+

@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "as.security";
+option java_outer_classname = "SecurityServiceImpl";
+
+package security;
+
+// Interface exported by the server.
+service SecurityService {
+  
+  rpc passportDetails( stream RequestDetails) returns (stream ResponseDetails) {}
+  rpc clearanceDetails(stream RequestClearance) returns(ResponseClearance);
+  rpc boardingDetails(RequestBoarding)  returns (stream ResponseBoarding);
+}
+//request message for passport details
+message RequestDetails {
+  string name = 1;
+  string date = 2;
+  int32 passportNo = 3; 
+   
+}
+//response message of details
+message ResponseDetails {
+	string responseMessage =1;
+  
+}
+//request message for arrest warrants
+message RequestClearance {
+	string name = 1;
+	int32 passportNo = 2; 
+		
+}
+//response for warrants
+message ResponseClearance {
+
+	string message = 1;	
+}
+//request message for flight details
+message RequestBoarding {
+	string flightId = 1;
+}
+//response message for flight
+message ResponseBoarding {
+	string message = 1;
+}
+
+//passing an empty message no server reply, error message
+message Empty{}
