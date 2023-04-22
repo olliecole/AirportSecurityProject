@@ -58,22 +58,22 @@ public final class SecurityServiceImpl {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016security.proto\022\010security\"@\n\016RequestDet" +
-      "ails\022\014\n\004name\030\001 \001(\t\022\014\n\004date\030\002 \001(\t\022\022\n\npass" +
-      "portNo\030\003 \001(\005\"*\n\017ResponseDetails\022\027\n\017respo" +
-      "nseMessage\030\001 \001(\t\"4\n\020RequestClearance\022\014\n\004" +
-      "name\030\001 \001(\t\022\022\n\npassportNo\030\002 \001(\005\"$\n\021Respon" +
-      "seClearance\022\017\n\007message\030\001 \001(\t\"#\n\017RequestB" +
-      "oarding\022\020\n\010flightId\030\001 \001(\t\"#\n\020ResponseBoa" +
-      "rding\022\017\n\007message\030\001 \001(\t\"\007\n\005Empty2\372\001\n\017Secu" +
-      "rityService\022L\n\017passportDetails\022\030.securit" +
-      "y.RequestDetails\032\031.security.ResponseDeta" +
-      "ils\"\000(\0010\001\022M\n\020clearanceDetails\022\032.security" +
-      ".RequestClearance\032\033.security.ResponseCle" +
-      "arance(\001\022J\n\017boardingDetails\022\031.security.R" +
-      "equestBoarding\032\032.security.ResponseBoardi" +
-      "ng0\001B$\n\013as.securityB\023SecurityServiceImpl" +
-      "P\001b\006proto3"
+      "\n\016security.proto\022\010security\"C\n\016RequestDet" +
+      "ails\022\014\n\004name\030\001 \001(\t\022\017\n\007message\030\002 \001(\t\022\022\n\np" +
+      "assportNo\030\003 \001(\005\"*\n\017ResponseDetails\022\027\n\017re" +
+      "sponseMessage\030\001 \001(\t\"4\n\020RequestClearance\022" +
+      "\014\n\004name\030\001 \001(\t\022\022\n\npassportNo\030\002 \001(\005\"$\n\021Res" +
+      "ponseClearance\022\017\n\007message\030\001 \001(\t\"#\n\017Reque" +
+      "stBoarding\022\020\n\010flightId\030\001 \001(\t\"#\n\020Response" +
+      "Boarding\022\017\n\007message\030\001 \001(\t\"\007\n\005Empty2\372\001\n\017S" +
+      "ecurityService\022L\n\017passportDetails\022\030.secu" +
+      "rity.RequestDetails\032\031.security.ResponseD" +
+      "etails\"\000(\0010\001\022M\n\020clearanceDetails\022\032.secur" +
+      "ity.RequestClearance\032\033.security.Response" +
+      "Clearance(\001\022J\n\017boardingDetails\022\031.securit" +
+      "y.RequestBoarding\032\032.security.ResponseBoa" +
+      "rding0\001B$\n\013as.securityB\023SecurityServiceI" +
+      "mplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -92,7 +92,7 @@ public final class SecurityServiceImpl {
     internal_static_security_RequestDetails_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_security_RequestDetails_descriptor,
-        new java.lang.String[] { "Name", "Date", "PassportNo", });
+        new java.lang.String[] { "Name", "Message", "PassportNo", });
     internal_static_security_ResponseDetails_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_security_ResponseDetails_fieldAccessorTable = new

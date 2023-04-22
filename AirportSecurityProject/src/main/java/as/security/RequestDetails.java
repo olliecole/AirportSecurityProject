@@ -21,7 +21,7 @@ private static final long serialVersionUID = 0L;
   }
   private RequestDetails() {
     name_ = "";
-    date_ = "";
+    message_ = "";
     passportNo_ = 0;
   }
 
@@ -58,7 +58,7 @@ private static final long serialVersionUID = 0L;
           case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            date_ = s;
+            message_ = s;
             break;
           }
           case 24: {
@@ -132,34 +132,34 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int DATE_FIELD_NUMBER = 2;
-  private volatile java.lang.Object date_;
+  public static final int MESSAGE_FIELD_NUMBER = 2;
+  private volatile java.lang.Object message_;
   /**
-   * <code>string date = 2;</code>
+   * <code>string message = 2;</code>
    */
-  public java.lang.String getDate() {
-    java.lang.Object ref = date_;
+  public java.lang.String getMessage() {
+    java.lang.Object ref = message_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      date_ = s;
+      message_ = s;
       return s;
     }
   }
   /**
-   * <code>string date = 2;</code>
+   * <code>string message = 2;</code>
    */
   public com.google.protobuf.ByteString
-      getDateBytes() {
-    java.lang.Object ref = date_;
+      getMessageBytes() {
+    java.lang.Object ref = message_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      date_ = b;
+      message_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -192,8 +192,8 @@ private static final long serialVersionUID = 0L;
     if (!getNameBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
     }
-    if (!getDateBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, date_);
+    if (!getMessageBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
     }
     if (passportNo_ != 0) {
       output.writeInt32(3, passportNo_);
@@ -210,8 +210,8 @@ private static final long serialVersionUID = 0L;
     if (!getNameBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
     }
-    if (!getDateBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, date_);
+    if (!getMessageBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
     }
     if (passportNo_ != 0) {
       size += com.google.protobuf.CodedOutputStream
@@ -235,8 +235,8 @@ private static final long serialVersionUID = 0L;
     boolean result = true;
     result = result && getName()
         .equals(other.getName());
-    result = result && getDate()
-        .equals(other.getDate());
+    result = result && getMessage()
+        .equals(other.getMessage());
     result = result && (getPassportNo()
         == other.getPassportNo());
     result = result && unknownFields.equals(other.unknownFields);
@@ -252,8 +252,8 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + NAME_FIELD_NUMBER;
     hash = (53 * hash) + getName().hashCode();
-    hash = (37 * hash) + DATE_FIELD_NUMBER;
-    hash = (53 * hash) + getDate().hashCode();
+    hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+    hash = (53 * hash) + getMessage().hashCode();
     hash = (37 * hash) + PASSPORTNO_FIELD_NUMBER;
     hash = (53 * hash) + getPassportNo();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -395,7 +395,7 @@ private static final long serialVersionUID = 0L;
       super.clear();
       name_ = "";
 
-      date_ = "";
+      message_ = "";
 
       passportNo_ = 0;
 
@@ -426,7 +426,7 @@ private static final long serialVersionUID = 0L;
     public as.security.RequestDetails buildPartial() {
       as.security.RequestDetails result = new as.security.RequestDetails(this);
       result.name_ = name_;
-      result.date_ = date_;
+      result.message_ = message_;
       result.passportNo_ = passportNo_;
       onBuilt();
       return result;
@@ -480,8 +480,8 @@ private static final long serialVersionUID = 0L;
         name_ = other.name_;
         onChanged();
       }
-      if (!other.getDate().isEmpty()) {
-        date_ = other.date_;
+      if (!other.getMessage().isEmpty()) {
+        message_ = other.message_;
         onChanged();
       }
       if (other.getPassportNo() != 0) {
@@ -585,71 +585,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object date_ = "";
+    private java.lang.Object message_ = "";
     /**
-     * <code>string date = 2;</code>
+     * <code>string message = 2;</code>
      */
-    public java.lang.String getDate() {
-      java.lang.Object ref = date_;
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        date_ = s;
+        message_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string date = 2;</code>
+     * <code>string message = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getDateBytes() {
-      java.lang.Object ref = date_;
+        getMessageBytes() {
+      java.lang.Object ref = message_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        date_ = b;
+        message_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string date = 2;</code>
+     * <code>string message = 2;</code>
      */
-    public Builder setDate(
+    public Builder setMessage(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      date_ = value;
+      message_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string date = 2;</code>
+     * <code>string message = 2;</code>
      */
-    public Builder clearDate() {
+    public Builder clearMessage() {
       
-      date_ = getDefaultInstance().getDate();
+      message_ = getDefaultInstance().getMessage();
       onChanged();
       return this;
     }
     /**
-     * <code>string date = 2;</code>
+     * <code>string message = 2;</code>
      */
-    public Builder setDateBytes(
+    public Builder setMessageBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      date_ = value;
+      message_ = value;
       onChanged();
       return this;
     }

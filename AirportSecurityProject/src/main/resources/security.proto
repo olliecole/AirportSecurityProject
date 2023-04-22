@@ -16,7 +16,7 @@ service SecurityService {
 //request message for passport details
 message RequestDetails {
   string name = 1;
-  string date = 2;
+  string message = 2;
   int32 passportNo = 3; 
    
 }

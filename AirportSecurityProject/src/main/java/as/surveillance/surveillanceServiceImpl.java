@@ -59,19 +59,19 @@ public final class surveillanceServiceImpl {
   static {
     java.lang.String[] descriptorData = {
       "\n\022surveillance.proto\022\014surveillance\"\035\n\rac" +
-      "cessRequest\022\014\n\004code\030\001 \001(\005\"!\n\016accessRespo" +
-      "nse\022\017\n\007message\030\001 \001(\t\" \n\rcameraRequest\022\017\n" +
-      "\007message\030\001 \001(\t\"!\n\016cameraResponse\022\017\n\007mess" +
-      "age\030\001 \001(\t\"\036\n\013fireRequest\022\017\n\007message\030\001 \001(" +
-      "\t\"\037\n\014fireResponse\022\017\n\007message\030\001 \001(\t\"\007\n\005Em" +
-      "pty2\344\001\n\023surveillanceService\022E\n\006access\022\033." +
-      "surveillance.accessRequest\032\034.surveillanc" +
-      "e.accessResponse\"\000\022E\n\006camera\022\033.surveilla" +
-      "nce.cameraRequest\032\034.surveillance.cameraR" +
-      "esponse\"\000\022?\n\004fire\022\031.surveillance.fireReq" +
-      "uest\032\032.surveillance.fireResponse\"\000B,\n\017as" +
-      ".surveillanceB\027surveillanceServiceImplP\001" +
-      "b\006proto3"
+      "cessRequest\022\014\n\004code\030\001 \001(\005\"/\n\016accessRespo" +
+      "nse\022\017\n\007message\030\001 \001(\t\022\014\n\004code\030\002 \001(\005\" \n\rca" +
+      "meraRequest\022\017\n\007message\030\001 \001(\t\"!\n\016cameraRe" +
+      "sponse\022\017\n\007message\030\001 \001(\t\"\036\n\013fireRequest\022\017" +
+      "\n\007message\030\001 \001(\t\"\037\n\014fireResponse\022\017\n\007messa" +
+      "ge\030\001 \001(\t\"\007\n\005Empty2\344\001\n\023surveillanceServic" +
+      "e\022E\n\006access\022\033.surveillance.accessRequest" +
+      "\032\034.surveillance.accessResponse\"\000\022E\n\006came" +
+      "ra\022\033.surveillance.cameraRequest\032\034.survei" +
+      "llance.cameraResponse\"\000\022?\n\004fire\022\031.survei" +
+      "llance.fireRequest\032\032.surveillance.fireRe" +
+      "sponse\"\000B,\n\017as.surveillanceB\027surveillanc" +
+      "eServiceImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -96,7 +96,7 @@ public final class surveillanceServiceImpl {
     internal_static_surveillance_accessResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_surveillance_accessResponse_descriptor,
-        new java.lang.String[] { "Message", });
+        new java.lang.String[] { "Message", "Code", });
     internal_static_surveillance_cameraRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_surveillance_cameraRequest_fieldAccessorTable = new

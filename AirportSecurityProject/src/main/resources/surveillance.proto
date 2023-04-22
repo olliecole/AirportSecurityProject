@@ -22,6 +22,8 @@ service surveillanceService {
 	//response message
 	message accessResponse {
 	string message =1;
+	int32 code = 2;
+	
 	}
 	// message request for camera system check
 	message cameraRequest {
@@ -30,6 +32,7 @@ service surveillanceService {
 	//response message
 	message cameraResponse {
 	string message = 1;
+	
 	}
 	//message request for fire system check
 	message fireRequest {

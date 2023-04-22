@@ -16,4 +16,9 @@ public interface accessResponseOrBuilder extends
    */
   com.google.protobuf.ByteString
       getMessageBytes();
+
+  /**
+   * <code>int32 code = 2;</code>
+   */
+  int getCode();
 }

@@ -18,14 +18,14 @@ public interface RequestDetailsOrBuilder extends
       getNameBytes();
 
   /**
-   * <code>string date = 2;</code>
+   * <code>string message = 2;</code>
    */
-  java.lang.String getDate();
+  java.lang.String getMessage();
   /**
-   * <code>string date = 2;</code>
+   * <code>string message = 2;</code>
    */
   com.google.protobuf.ByteString
-      getDateBytes();
+      getMessageBytes();
 
   /**
    * <code>int32 passportNo = 3;</code>
