@@ -1,8 +1,12 @@
 package as.security;
 
+import java.net.InetAddress;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
+
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceInfo;
 
 import as.security.SecurityServiceGrpc.SecurityServiceBlockingStub;
 import as.security.SecurityServiceGrpc.SecurityServiceStub;
@@ -16,18 +20,32 @@ public class SecurityClient{
 	//private static Logger logger = Logger.getLogger(SecurityClient.class.getName());
 	private static SecurityServiceBlockingStub blockingStub;
 	private static SecurityServiceStub asyncStub;
+	private static String SERVICE_HOST = "localhost";
+    private static int SERVICE_PORT = 50053;
 	
-	public static void main(String args []) {
+	public static void main(String args []) throws Exception{
 		
-		String host = "localhost";
-		int port = 50053;
+        // Create an instance of JmDNS and bind it to a specific network interface given its IP-address
+        JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
+        String SERVICE_TYPE = "passportSecurity._tcp.local.";
+        String SERVICE_NAME = "SecurityService";
+        ServiceInfo serviceInfo = jmdns.getServiceInfo(SERVICE_TYPE, SERVICE_NAME);
+        if (serviceInfo != null) {
+            SERVICE_HOST = serviceInfo.getHostAddresses()[0];
+            SERVICE_PORT = serviceInfo.getPort();
+            System.out.println("Discovered service: " + SERVICE_HOST + ":" + SERVICE_PORT + " ("
+                    + serviceInfo.getName() + ")");
+        } else {
+            System.out.println("Service not found");
+        }
+        jmdns.close();
 		
 		ManagedChannel channel = ManagedChannelBuilder.
-				forAddress(host, port)
+				forAddress(SERVICE_HOST, SERVICE_PORT)
 				.usePlaintext()
 				.build();
 		
-			//stubs generated from proto file	
+			//stubs generated from .proto file	
 		   blockingStub = SecurityServiceGrpc.newBlockingStub(channel);
 		   asyncStub = SecurityServiceGrpc.newStub(channel);
 		   new SecurityClient();

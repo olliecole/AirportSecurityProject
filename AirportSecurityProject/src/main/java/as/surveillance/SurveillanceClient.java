@@ -1,7 +1,13 @@
 package as.surveillance;
 
+import java.io.IOException;
+import java.net.InetAddress;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
+
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceInfo;
+
 import as.surveillance.surveillanceServiceGrpc.surveillanceServiceBlockingStub;
 import as.surveillance.surveillanceServiceGrpc.surveillanceServiceStub;
 import io.grpc.ManagedChannel;
@@ -14,13 +20,28 @@ public class SurveillanceClient{
 	private static final Logger logger = Logger.getLogger(SurveillanceClient.class.getName());
 	private static surveillanceServiceBlockingStub blockingStub;
 	private static surveillanceServiceStub asyncStub;
-	public static void main(String args[]){
+	private static String SERVICE_HOST = "localhost";
+    private static int SERVICE_PORT = 50052;
 	
-		String host = "localhost";
-		int port = 50052;
+	public static void main(String args[]) throws IOException{
+	
+        // Create an instance of JmDNS and bind it to a specific network interface given its IP-address.
+        JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
+        String SERVICE_TYPE = "airportSurveillance._tcp.local.";
+        String SERVICE_NAME = "SurveillanceService";
+        ServiceInfo serviceInfo = jmdns.getServiceInfo(SERVICE_TYPE, SERVICE_NAME);
+        if (serviceInfo != null) {
+            SERVICE_HOST = serviceInfo.getHostAddresses()[0];
+            SERVICE_PORT = serviceInfo.getPort();
+            System.out.println("Discovered service: " + SERVICE_HOST + ":" + SERVICE_PORT + " ("
+                    + serviceInfo.getName() + ")");
+        } else {
+            System.out.println("Service not found");
+        }
+        jmdns.close();
 		
 		ManagedChannel channel = ManagedChannelBuilder.
-				forAddress(host, port)
+				forAddress(SERVICE_HOST, SERVICE_PORT)
 				.usePlaintext()
 				.build();
 		
