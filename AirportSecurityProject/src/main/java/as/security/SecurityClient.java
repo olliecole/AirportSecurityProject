@@ -1,5 +1,6 @@
 package as.security;
 
+import java.awt.Dimension;
 import java.net.InetAddress;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -7,6 +8,13 @@ import java.util.logging.Logger;
 
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import as.security.SecurityServiceGrpc.SecurityServiceBlockingStub;
 import as.security.SecurityServiceGrpc.SecurityServiceStub;
@@ -15,13 +23,55 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
-public class SecurityClient{
+public class SecurityClient extends JFrame{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//private static Logger logger = Logger.getLogger(SecurityClient.class.getName());
 	private static SecurityServiceBlockingStub blockingStub;
 	private static SecurityServiceStub asyncStub;
 	private static String SERVICE_HOST = "localhost";
     private static int SERVICE_PORT = 50053;
+    
+    public SecurityClient() {
+    	
+super("Security Service");
+    	
+        JLabel usernameLabel = new JLabel("Enter passport name");
+        JTextField userInput = new JTextField(10);
+        JLabel passportLabe1 = new JLabel("Enter passport number");
+        JTextField passportNoInput = new JTextField(10);
+        
+        JButton login = new JButton("Run check");
+        login.addActionListener(e -> {
+			passportDetails();
+		});
+        
+      
+
+        JPanel panel = new JPanel();
+        panel.add(usernameLabel);
+        panel.add(userInput);
+        panel.add(login);
+        panel.add(passportLabe1);
+        panel.add(passportNoInput);
+        panel.add(login);       
+        JTextArea text = new JTextArea(10, 30);                
+        panel.add(new JScrollPane(text));
+        add(panel);
+        
+    
+
+        // Set the preferred size of the frame
+        setPreferredSize(new Dimension(450, 500));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        pack();
+        setVisible(true);
+    	
+    }
+    
 	
 	public static void main(String args []) throws Exception{
 		
@@ -106,6 +156,7 @@ public class SecurityClient{
 			// Mark the end of requests
 			requestObserver.onCompleted();
 			System.out.println("Server completed the task");
+			
 			
 			// Sleep for a bit before sending the next one.
 			Thread.sleep(new Random().nextInt(1000) + 500);

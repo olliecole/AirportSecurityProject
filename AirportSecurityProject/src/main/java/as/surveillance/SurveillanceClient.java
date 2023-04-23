@@ -1,5 +1,6 @@
 package as.surveillance;
 
+import java.awt.Dimension;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.util.concurrent.TimeUnit;
@@ -7,21 +8,68 @@ import java.util.logging.Logger;
 
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import as.surveillance.surveillanceServiceGrpc.surveillanceServiceBlockingStub;
 import as.surveillance.surveillanceServiceGrpc.surveillanceServiceStub;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
-public class SurveillanceClient{
+public class SurveillanceClient extends JFrame{
 	
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static final Logger logger = Logger.getLogger(SurveillanceClient.class.getName());
 	private static surveillanceServiceBlockingStub blockingStub;
 	private static surveillanceServiceStub asyncStub;
 	private static String SERVICE_HOST = "localhost";
     private static int SERVICE_PORT = 50052;
+    private static JTextField code;
+    
+    public SurveillanceClient() {
+    	
+    	super("Surveillance Service");
+    	
+        JLabel section = new JLabel("Enter access code");
+        JTextField userInput = new JTextField(10);
+        
+        
+        JButton login = new JButton("Enter");
+        login.addActionListener(e -> {
+			access();
+		});
+        
+     
+
+        JPanel panel = new JPanel();
+        panel.add(section);
+        panel.add(userInput);
+        panel.add(login);
+             
+        JTextArea text = new JTextArea(10, 30);                
+        panel.add(new JScrollPane(text));
+        add(panel);
+        
+      
+
+        // Set the preferred size of the frame
+        setPreferredSize(new Dimension(450, 500));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        pack();
+        setVisible(true);
+    	
+    }
+    
 	
 	public static void main(String args[]) throws IOException{
 	
@@ -84,7 +132,7 @@ public class SurveillanceClient{
             e.printStackTrace();
         }
 	}
-
+	//server streaming 	rpc
 	private static void camera() {
 		String message;
 		

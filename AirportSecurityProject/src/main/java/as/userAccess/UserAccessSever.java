@@ -58,7 +58,7 @@ public class UserAccessSever extends userAccessServiceImplBase{
 
 	            String service_type = prop.getProperty("service_type");// "_http._tcp.local.";
 	            String service_name = prop.getProperty("service_name");// "example";
-	            int service_port = Integer.parseInt(prop.getProperty("service_port"));// #.50051;
+	            int service_port = Integer.parseInt(prop.getProperty("service_port"));// 50051;
 
 	            String service_description_properties = prop.getProperty("service_description");//
 
@@ -123,8 +123,14 @@ public class UserAccessSever extends userAccessServiceImplBase{
 		 //unary RPC
 		 public void logout(LogoutRequest request1, StreamObserver<LogoutResponse>responseObserver) {
 			 System.out.println("Receiving logout request.");
-			// if(username == "olliecole")
-			 System.out.println("Goodbye " + request1.getUsername());
+			/* if(request1.getUsername() == "olliecole") {
+				 System.out.println("Goodbye " + request1.getUsername());
+				 LogoutResponse response = LogoutResponse.newBuilder().setResponseMessage("Goodbye " + request1.getUsername()).build();
+				 responseObserver.onNext(response); 
+			 }else {
+				 System.out.println("Incorrect username");
+			 }*/
+			 //System.out.println("Goodbye " + request1.getUsername());
 			 LogoutResponse response = LogoutResponse.newBuilder().setResponseMessage("Goodbye " + request1.getUsername()).build();
 			 responseObserver.onNext(response);
 			 responseObserver.onCompleted();
